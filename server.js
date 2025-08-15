@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import auth_route from './routes/auth_route.js';
-import { rateLimiter } from "./middleware/ratelimiter.js";
+// import { rateLimiter } from "./middleware/ratelimiter.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import gossipRoute from './routes/gossips_route.js';
@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
 });
 
 
-app.use(rateLimiter);
+// app.use(rateLimiter);
 app.use("/api/users", auth_route);
 app.use("/api/post", gossipRoute);
 
@@ -74,3 +74,4 @@ app.get("/", (req, res) => {
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
